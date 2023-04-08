@@ -154,7 +154,8 @@ function AuthController(database, logger) {
                     email: userProfile.email,
                 }  
                 this.logger.info("Creating new user...")
-                registeredUser = await this.database.createUser(newUser)
+                
+                registeredUser = await this.database.createUser(newUser);
             }
 
             let { providers = [] } = registeredUser

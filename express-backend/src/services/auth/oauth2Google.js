@@ -1,4 +1,3 @@
-
 const envValidator = require("../../config/config")
 if (!envValidator.isGoogleOAuth2ServiceConfigured()) {
     return

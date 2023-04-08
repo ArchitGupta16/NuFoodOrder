@@ -14,7 +14,8 @@ const frontUri = `http://${process.env.FRONT_HOST}:${process.env.FRONT_PORT}`
 
 app.use(cors({ origin: frontUri, credentials: true }))
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json())
+// app.use(bodyParser.json())
+app.use(bodyParser.json({ extended: true }))
 app.use(express.json())
 app.use(cookieParser())
 app.use(passport.initialize())

@@ -9,6 +9,7 @@ const isUserAuthenticated = (request, response, next) => {
     logger.debug("Verifying JWT...")
 
     const jwtToken = request.cookies.jwt
+    // console.log(jwtToken)
     jwt.verify(jwtToken, process.env.TOKEN_SECRET, (err, decodedToken) => {
         if (err) {
             logger.error(`Error during JWT verification: ${err}`)
