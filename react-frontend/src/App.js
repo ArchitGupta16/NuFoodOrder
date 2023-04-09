@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { LoginPage, RegisterPage, HomePage, SuccessLoginPage } from 'views'
+import LaunchPage from "views/LaunchPage"
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import logo from "assets/logo.svg"
 import ResetPage from "views/ResetPassword"
@@ -28,7 +29,8 @@ function App() {
         <div className='App-body'>
             <BrowserRouter>
                 <Routes>
-                    <Route index element={<LoginPage handleLogin={handleLogin}/>} />
+                    <Route index element={<LaunchPage />} />
+                    {/* <Route path="/" element={<LaunchPage />} /> */}
                     <Route path="login" element={<LoginPage handleLogin={handleLogin}/>} />
                     <Route path="login/success" element={<SuccessLoginPage/>} />
                     <Route path="register" element={<RegisterPage/>} />

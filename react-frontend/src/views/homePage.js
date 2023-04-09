@@ -29,6 +29,28 @@ function UserInformation ({user}) {
     )
 }
 
+function Navbar({ brandName, profileIcon }) {
+    return (
+        <nav className="navbar navbar-expand-lg bg-light box-shadow">
+            <div className="container-fluid">
+                <a className="navbar-brand" href="/">
+                    {brandName}
+                </a>
+                <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul className="navbar-nav">
+                        <li className="nav-item">
+                            <a className="nav-link" href="/">
+                                <img src={profileIcon} alt="Profile" width="32" height="32" />
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    )
+}
+  
+
 function HomePage({handleLogout}) {
 
     const [ userInformation, setUserInformation ] = useState(null)
@@ -66,15 +88,17 @@ function HomePage({handleLogout}) {
     }
 
     return (
-        <div className='App-body'>
-            <h1 className='mb-5'>Welcome!</h1>
-
+        <div className="home-wel">
+            <Navbar brandName="NuOrder" profileIcon="/path/to/profile/icon.png" />
+        
+            <h1 className="mb-5">Welcome!</h1>
+        
             <UserInformation user={userInformation} />
-
-            <LogoutButton textContent={"Logout"} onClick={logout}/>
+        
+            <LogoutButton textContent={'Logout'} onClick={logout} />
         </div>
     )
-}
+}   
 
 
 export default HomePage

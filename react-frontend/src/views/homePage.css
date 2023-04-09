@@ -1,5 +1,4 @@
 
-
 h2 {
   text-align: center;
 }
@@ -11,4 +10,39 @@ h2 {
   object-fit: cover;
   object-position: center;
   border: 1px solid #212529;
+}
+
+.d-flex .flex-column {
+  object-position: top 0 right 10px;
+} 
+
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* background-color: black; */
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: white;
+}
+
+.navbar-nav {
+  margin-right: 0 !important;
+}
+
+.nav-link {
+  padding: 0.5rem 1rem !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: rgba(0, 0, 0, 0.7);
 }

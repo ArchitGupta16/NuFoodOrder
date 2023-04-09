@@ -8,7 +8,7 @@ function SuccessLoginPage(props) {
     }, 2000)
 
     return (
-        <div className='App-body'>
+        <div className='success-log'>
             <h2>Successful login!</h2>
             <small>Redirecting to home page...</small>
         </div>

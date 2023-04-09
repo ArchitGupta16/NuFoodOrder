@@ -32,7 +32,7 @@ body {
   font-size: calc(10px + 2vmin);
 }
 
-.App-body {
+.App-body{
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -70,6 +70,10 @@ form .clogin-form{
   width: 300px;
   text-align: center;
   
+}
+
+.box-shadow {
+  box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.1);
 }
 
 
