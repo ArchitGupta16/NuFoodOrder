@@ -56,47 +56,50 @@ function RegisterForm({onSubmit}) {
 
     return (
         <form onSubmit={handleRegisterUser}>
-            <FullNameInput
-                onRegister={register("fullname", {required: true})}
-                inputName="fullname"
-                label="Full name"
-                placeholder="Enter your full name"
-                className={errors.fullname ? 'is-invalid' : ''}
-                errorMessage={errors.fullname?.message}
-                maxLength={MAX_LENGTH_FULLNAME}
-            />
-            <EmailInput 
-                onRegister={register("email", {required: true})}
-                inputName="email"
-                label="Email address"
-                placeholder="name@example.com"
-                className={errors.email ? 'is-invalid' : ''}
-                errorMessage={errors.email?.message}
-                maxLength={MAX_LENGTH_EMAIL}
-            />
-            <PasswordInput
-                onRegister={register("password", {required: true})}
-                inputName="password"
-                label="Password"
-                placeholder="Enter your password"
-                className={errors.password ? 'is-invalid' : ''}
-                errorMessage={errors.password?.message}
-                maxLength={MAX_LENGTH_PASSWORD}
-            />
-            <PasswordInput
-                onRegister={register("passwordConfirmation", {required: true})}
-                inputName="passwordConfirmation"
-                label="Confirm password"
-                placeholder="Confirm your password"
-                className={errors.passwordConfirmation ? 'is-invalid' : ''}
-                errorMessage={errors.passwordConfirmation?.message}
-                maxLength={MAX_LENGTH_PASSWORD}
-            />
+            <div className='sign-form'>
+                <FullNameInput
+                    onRegister={register("fullname", {required: true})}
+                    inputName="fullname"
+                    label="Full name"
+                    placeholder="Enter your full name"
+                    className={errors.fullname ? 'is-invalid' : ''}
+                    errorMessage={errors.fullname?.message}
+                    maxLength={MAX_LENGTH_FULLNAME}
+                />
+                <EmailInput 
+                    onRegister={register("email", {required: true})}
+                    inputName="email"
+                    label="Email address"
+                    placeholder="name@example.com"
+                    className={errors.email ? 'is-invalid' : ''}
+                    errorMessage={errors.email?.message}
+                    maxLength={MAX_LENGTH_EMAIL}
+                />
+                <PasswordInput
+                    onRegister={register("password", {required: true})}
+                    inputName="password"
+                    label="Password"
+                    placeholder="Enter your password"
+                    className={errors.password ? 'is-invalid' : ''}
+                    errorMessage={errors.password?.message}
+                    maxLength={MAX_LENGTH_PASSWORD}
+                />
+                <PasswordInput
+                    onRegister={register("passwordConfirmation", {required: true})}
+                    inputName="passwordConfirmation"
+                    label="Confirm password"
+                    placeholder="Confirm your password"
+                    className={errors.passwordConfirmation ? 'is-invalid' : ''}
+                    errorMessage={errors.passwordConfirmation?.message}
+                    maxLength={MAX_LENGTH_PASSWORD}
+                />
 
-            <RegisterButton
-                textContent={"Sign up"} 
-            />
+                <RegisterButton
+                    textContent={"Sign up"} 
+                />
+            </div>
         </form>
+        
     )
 }
 
