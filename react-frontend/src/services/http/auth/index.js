@@ -29,6 +29,22 @@ export const registerUser = async (credentials) => {
     })
 }
 
+// export const resetPassword = async (credentials) => {
+
+    
+//     if (!credentials.email) {
+//         throw Error("Your email address is required")
+//     }
+
+//     return axios({
+//         method: "post",
+//         url: "http://localhost:3080/api/v1/resetPassword",
+//         withCredentials: true,
+//         data: credentials,
+//         headers: { "Content-Type": "application/json" },
+//     })
+// }
+
 export const startWithCredentials = async (credentials) => {
     if (!credentials.email) {
         throw "Enter a valid email"

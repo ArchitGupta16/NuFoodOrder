@@ -108,6 +108,7 @@ function LoginPage({handleLogin}) {
                 messageError={messageError}
             />
             <LinkButton route={"/register"} previousText="Don´t have an account?" linkText="Sign up"/>
+            <LinkButton route={"/resetPassword"} previousText="Forgot your Password?" linkText="Reset Now"/>
         </section>
     )
 }

@@ -2,6 +2,7 @@ import { useState } from "react"
 import { LoginPage, RegisterPage, HomePage, SuccessLoginPage } from 'views'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import logo from "assets/logo.svg"
+import ResetPage from "views/ResetPassword"
 
 function Footer() {
     return (
@@ -32,6 +33,7 @@ function App() {
                     <Route path="login/success" element={<SuccessLoginPage/>} />
                     <Route path="register" element={<RegisterPage/>} />
                     <Route path="home" element={ !loggedIn ? <Navigate to={"/login"} /> : <HomePage handleLogout={handleLogout}/>} />
+                    <Route path="resetPassword" element={<ResetPage/>}/>
                     <Route path="*" element={<h1>404 Not found</h1>} />
                 </Routes>
             </BrowserRouter>

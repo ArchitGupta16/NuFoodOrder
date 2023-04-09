@@ -2,11 +2,12 @@ function AuthController(database, logger) {
 
     this.database = database
     this.logger = logger
-
+    const nodemailer = require('nodemailer');
     const CONST = require("../utils/constants")
     const bcrypt = require("bcrypt")
     const DuplicatedEmailError = require("../utils/customErrors")
     const jwtUtil = require("../utils/jwt")
+    const Otp = require('../models/otp');
 
     this.getUserSession = (request, response) => {
         const jwtToken = request.cookies.jwt
@@ -67,7 +68,7 @@ function AuthController(database, logger) {
             }
 
             this.logger.error(error)
-            const message = "Imposible to register user"
+            const message = "Unable to register user"
             response.status(CONST.httpStatus.INTERNAL_ERROR).json({ error: message})
         }
     }
@@ -114,6 +115,62 @@ function AuthController(database, logger) {
         response.redirect(process.env.SUCCESSFUL_LOGIN_REDIRECT)
     }
 
+    
+
+    this.changePassword = async (req,res) => {
+            let data = await Otp.find({email:req.body.email,code:req.body.otpCode});
+            const response = {
+                if (data){
+                    let currentTime = new Date().getTime();
+                    let diff = data.expireIn - currentTime;
+                    if(diff<0){
+                        response.message = 'Token Expired';
+                        response.status = 'error';
+                    }else{
+                        let user = this.database.getUserByEmail(req.body.email);
+                        user.password = req.body.password
+                        user.save()
+                        response.message = 'Password Changed';
+                        response.status = 'Success';
+                    }
+                }
+        }
+    }
+
+    this.emailSend = async (req,res) => {
+        let data = await this.database.getUserByEmail(req.body.email);
+        const response = {};
+        
+        if (data){
+            let otpcode = Math.floor((Math.random()*10000+1));
+            let otpData = new Otp({
+                email: req.body.email,
+                code: otpcode,
+                expireIn: new Date().getTime() + 300*1000
+            })
+            let otpResponse = await otpData.save();
+            const link = `http://localhost:3000/api/v1/resetPassword/${otpResponse._id}`
+            mailer(req.body.email,link);
+            
+            response.message = 'Mail sent'
+            response.status = "Success"
+            res.status(200).json(response)
+            console.log("Success otp mail sent",otpResponse)
+            console.log("Check Email");
+
+        }
+        else{
+            response.message = 'Mail Not sent! Somthing went wrong';
+            response.status = 'Failure';
+            res.status(400).json(response)
+            console.log("Error!!");
+            console.log("Email not found")
+        }
+    }
+
+    
+    
+    
     //#region Auxiliar methods
     const MONGOOSE_DUPLICATED_EMAIL_ERROR_CODE = 11000
 
@@ -177,11 +234,45 @@ function AuthController(database, logger) {
         return user
     }
 
-    //#endregion
-}
+    
+    const mailer = (email,link) => {
+        
+        var transporter = nodemailer.createTransport({
+            service: 'gmail.com',
+            port: 587,
+            secure: false,
+            auth: {
+                user: 'nuorder2023@gmail.com',
+                pass: 'yqhzpfphhtqanvjt'
+            }
+        });
+        
+        var mailOptions = {
+            from: 'nuorder2023@gmail.com',
+            to: `${email}`,
+            subject: 'Reset password LINK',
+            text: 'Reset your password : ' + `${link}`
+        };
 
+        transporter.sendMail(mailOptions, function(err,info){
+            if(err){
+                console.log(err);
+
+            }
+            else{
+                console.log('Email sent'+ info.response);
+            };
+        });
+    };
+    //#endregion
+
+    
+
+}
 const logger = require("../services/log")
 const database = require("../services/database")
+const { response } = require("express")
+const User = require("../models/user")
 const authController = new AuthController(database, logger)
 
 module.exports = authController
