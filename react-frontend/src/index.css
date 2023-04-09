@@ -38,6 +38,10 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-image: url('assets/bg-01.webp');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .App-link {
@@ -59,12 +63,15 @@ h2 {
 
 
 small {
-  color: dimgray
+  color: white;
 }
 
-form {
-  width: 300px
+form .clogin-form{
+  width: 300px;
+  text-align: center;
+  
 }
+
 
 footer {
   position: absolute;
@@ -74,4 +81,20 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.signup-form {
+  background-color:white;
+  border-radius: 10px;
+  box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  /* padding: 100px; */
+  margin: 0 auto;
+  /* max-width: 600px; */
+  width: 500px;
+}
+
+.signup-form .mb-3 {
+  font-weight: bold;
+  padding-top: 10px;
 }

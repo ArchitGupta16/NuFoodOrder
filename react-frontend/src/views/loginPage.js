@@ -96,12 +96,14 @@ function LoginPage({handleLogin}) {
     return (
         <section className='login-card'>
 
-            <h2 className='mb-3'>Log in</h2>
+            <h2 className='mb-3'>Login</h2>
+            <div className='button-form'>
 
-            { isGoogleAvailable && <GoogleOAuth2Button onClick={startWithGoogle} /> }
-            { isGithubAvailable && <GitHubOAuth2Button onClick={startWithGitHub} /> }
+                { isGoogleAvailable && <GoogleOAuth2Button onClick={startWithGoogle} /> }
+                { isGithubAvailable && <GitHubOAuth2Button onClick={startWithGitHub} /> }
 
-            { (isGoogleAvailable || isGithubAvailable) && <Separator /> }
+                { (isGoogleAvailable || isGithubAvailable) && <Separator /> }
+            </div>
 
             <CredentialsLoginForm 
                 onSubmit={startWithEmail}
