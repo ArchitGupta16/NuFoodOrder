@@ -18,8 +18,14 @@ function LaunchPage () {
 
             <div className="header">
                 
-                <div className='button-1'><Button route={"/login"} buttonText="Login"/></div>    
-                <div className='button-1'><Button route={"/register"} buttonText="Sign up"/></div>
+                <div className='button-1'>
+                    {/* <Button route={"/login"} buttonText="Login"/> */}
+                    <a href="/login" className='btnls'>Login</a>
+                </div>    
+                <div className='button-1'>
+                    {/* <Button route={"/register"} buttonText="Sign up"/> */}
+                    <a href='/register' className='btnls'>Sign up</a>
+                </div>
             </div>
             
         </div>

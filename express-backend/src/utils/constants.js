@@ -15,7 +15,7 @@ const OAuthProviders = {
     Google: "Google",
 }
 
-const maxAgeCookieExpired = 1 * 24 * 60 * 60 * 1000
+const maxAgeCookieExpired = 30 * 1000
  
 const CONST = { httpStatus, OAuthProviders, maxAgeCookieExpired}
 
