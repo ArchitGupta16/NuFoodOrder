@@ -33,8 +33,9 @@ button {
     border-radius: 10px;
     box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    /* padding: 100px; */
-    margin: 0 auto;
+    padding-bottom: 10px;
+    padding-top: 5px;
+    margin: 250px auto;
     /* max-width: 600px; */
     width: 500px;
   }

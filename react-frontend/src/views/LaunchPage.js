@@ -2,6 +2,7 @@ import React from 'react'
 import './LaunchPage.css'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { LinkButton } from 'components/buttons'
+import Button from './Button'
 
 function LaunchPage () {
 
@@ -9,14 +10,22 @@ function LaunchPage () {
 
 
     return (
-        <div className="App-body launch-page">
-            <div className="header">
-                <LinkButton route={"/login"} linkText="Login"/>
-                <LinkButton route={"/register"} linkText="Sign up"/>
+        <div className="launch-page">
+            
+            <div>
+                <h1>Welcome to NuOrder</h1>
             </div>
-            <h1 className="branch-name">NuOrder</h1>
+
+            <div className="header">
+                
+                <div className='button-1'><Button route={"/login"} buttonText="Login"/></div>    
+                <div className='button-1'><Button route={"/register"} buttonText="Sign up"/></div>
+            </div>
+            
         </div>
     )
 }
 
 export default LaunchPage
+
+

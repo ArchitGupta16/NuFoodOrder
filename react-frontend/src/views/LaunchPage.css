@@ -1,3 +1,58 @@
-.App-body .launch-page {
-    background-image: url("https://i.gifer.com/9tI.gif");
+.launch-page {
+  background-image: url('../assets/bbg-s.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+/* h1 {
+    text-align: center;
+    margin-top: 300px;
+    font-weight: bold;
+    font-size: 50px;
+} */
+
+h1 {
+    color: rgb(240, 121, 2);
+    font-family: "Courier";
+    margin: 10px 0 0 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 10.8em;
+    animation: type 2s;
+    /* text-align: center; */
+    margin-top: 300px;
+    font-weight: bold;
+    font-size: 100px;
+}
+
+@keyframes type {
+    from { width: 0;}
+}
+
+.link-button {
+  display: inline-block;
+  background-color: #4bc55a;
+  color: #fff;
+  border: none;
+  padding: 30px 30px;
+  text-decoration: none;
+  cursor: pointer;
+  margin-right: 50px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.button-1 {
+  position: relative;
+  margin-right: 50%;
+  margin-bottom: 30px;
+}
+
+
+.link-button:hover {
+  background-color: #0069d9;
 }

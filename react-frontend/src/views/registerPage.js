@@ -2,6 +2,7 @@ import React from 'react'
 import { RegisterForm } from 'components/forms'
 import { LinkButton } from 'components/buttons'
 import { authController } from "services/http"
+import './registerPage.css'
 
 function RegisterPage() {
 
@@ -11,11 +12,13 @@ function RegisterPage() {
     
     return (            
         <>
-           <div className='signup-form'>
-                <h2 className='mb-3'>Create account</h2>
-                <RegisterForm onSubmit={registerUser}/>
-                <LinkButton route={"/login"} previousText="Have an account yet?" linkText="Sign in"/>
-           </div>
+            <div className='signup-page'>
+                <div className='signup-form'>
+                    <h2 className='mb-3'>Create account</h2>
+                    <RegisterForm onSubmit={registerUser}/>
+                    <LinkButton route={"/login"} previousText="Have an account yet?" linkText="Sign in"/>
+                </div>
+            </div>
         </>
     )
 }

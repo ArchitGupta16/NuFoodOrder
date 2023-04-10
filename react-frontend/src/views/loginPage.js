@@ -5,6 +5,8 @@ import { authController, serviceController } from "services/http"
 import { CredentialsLoginForm } from "components/forms"
 import { GoogleOAuth2Button, GitHubOAuth2Button, LinkButton } from 'components/buttons'
 import { useNavigate } from 'react-router-dom'
+import './loginPage.css'
+
 
 function Separator () {
     return (
@@ -94,24 +96,26 @@ function LoginPage({handleLogin}) {
     }
 
     return (
-        <section className='login-card'>
+        <div className='login-page'>
+            <section className='login-card '>
 
-            <h2 className='mb-3'>Login</h2>
-            <div className='button-form'>
+                <h2 className='mb-3'>Login</h2>
+                <div className='button-form'>
 
-                { isGoogleAvailable && <GoogleOAuth2Button onClick={startWithGoogle} /> }
-                { isGithubAvailable && <GitHubOAuth2Button onClick={startWithGitHub} /> }
+                    { isGoogleAvailable && <GoogleOAuth2Button onClick={startWithGoogle} /> }
+                    { isGithubAvailable && <GitHubOAuth2Button onClick={startWithGitHub} /> }
 
-                { (isGoogleAvailable || isGithubAvailable) && <Separator /> }
-            </div>
+                    { (isGoogleAvailable || isGithubAvailable) && <Separator /> }
+                </div>
 
-            <CredentialsLoginForm 
-                onSubmit={startWithEmail}
-                messageError={messageError}
-            />
-            <LinkButton route={"/register"} previousText="Don´t have an account?" linkText="Sign up"/>
-            <LinkButton route={"/resetPassword"} previousText="Forgot your Password?" linkText="Reset Now"/>
-        </section>
+                <CredentialsLoginForm 
+                    onSubmit={startWithEmail}
+                    messageError={messageError}
+                />
+                <LinkButton route={"/register"} previousText="Don´t have an account?" linkText="Sign up"/>
+                <LinkButton route={"/resetPassword"} previousText="Forgot your Password?" linkText="Reset Now"/>
+            </section>
+        </div>
     )
 }
 

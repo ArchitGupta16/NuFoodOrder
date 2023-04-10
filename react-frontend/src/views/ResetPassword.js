@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react'
 // import { CredentialsLoginForm } from "components/forms"
 import { useNavigate } from 'react-router-dom'
 import CredentialsResetForm from 'components/forms/resetForm'
+import './ResetPassword.css'
 
 function ResetPage({handleReset}) {
 
@@ -31,21 +32,23 @@ function ResetPage({handleReset}) {
             setMessageError(error)
             return
         }
-        navigate("/login");
+        navigate("/login")
     }
 
     return (
-        <section className='login-card'>
+        <div className='rs-pass'>
+            <section className='login-card rs-pass'>
 
-            <h2 className='mb-3'>Reset Password</h2>
+                <h2 className='mb-3'>Reset Password</h2>
 
-            <CredentialsResetForm
-                onSubmit={onSuccessReset}
-                messageError={messageError}
-            />
-        </section>
+                <CredentialsResetForm
+                    onSubmit={onSuccessReset}
+                    messageError={messageError}
+                />
+            </section>
+        </div>
     )
 }
 
 
-export default ResetPage;
+export default ResetPage
