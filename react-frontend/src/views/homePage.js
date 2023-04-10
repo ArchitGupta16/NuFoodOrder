@@ -3,6 +3,7 @@ import { LogoutButton } from 'components/buttons'
 import { usersController } from 'services/http'
 import "./homePage.css"
 import { useNavigate } from 'react-router-dom'
+import { Form } from 'react-bootstrap'
 
 
 function Spinner() {
@@ -88,15 +89,18 @@ function HomePage({handleLogout}) {
     }
 
     return (
+        
         <div className="home-wel">
             <Navbar brandName="NuOrder" profileIcon="/path/to/profile/icon.png" />
-        
-            <h1 className="mb-5">Welcome!</h1>
-        
-            <UserInformation user={userInformation} />
-        
-            <LogoutButton textContent={'Logout'} onClick={logout} />
+            <form>
+                <div>
+                    <h1 className="mb-5">Welcome!</h1>
+                    <UserInformation user={userInformation} />
+                    <LogoutButton textContent={'Logout'} onClick={logout} />
+                </div>
+            </form>
         </div>
+                
     )
 }   
 

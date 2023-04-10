@@ -2,7 +2,7 @@ import React from 'react'
 import { useForm } from "react-hook-form"
 import { LoginButton } from 'components/buttons'
 import { EmailInput, PasswordInput } from 'components/inputs'
-import "./resetForm.css"
+import "./loginForm.css"
 
 function CredentialsResetForm ({onSubmit, messageError}) {
 
@@ -21,27 +21,31 @@ function CredentialsResetForm ({onSubmit, messageError}) {
     }
 
     return (
+        
         <div className='rs-card'>
-            <form onSubmit={handleContinueWithEmail}>
-                <EmailInput 
-                    onRegister={register("email", {
-                        required: true,
-                        pattern: {
-                            value: /.+@.+\.(.){2,5}$/i,
-                            message: "Invalid email address"
-                        }
-                    })}
-                    inputName="email"
-                    label="Email address"
-                    placeholder="Enter your email"
-                />
-                
-                <div className="mt-3 mx-2 message-error" id="message-error">{messageError}</div>
+            <form onSubmit={handleContinueWithEmail}> 
+                <div className='signup-form'>
+                    <h2>Reset Password</h2>
+                    <EmailInput 
+                        onRegister={register("email", {
+                            required: true,
+                            pattern: {
+                                value: /.+@.+\.(.){2,5}$/i,
+                                message: "Invalid email address"
+                            }
+                        })}
+                        inputName="email"
+                        label="Email address"
+                        placeholder="Enter your email"
+                    />
+                    
+                    <div className="mt-3 mx-2 message-error" id="message-error">{messageError}</div>
 
-                <LoginButton
-                    textContent={"Reset Password"}
-                    onClick={onSubmit}
-                />
+                    <LoginButton
+                        textContent={"Reset Password"}
+                        onClick={onSubmit}
+                    />
+                </div>
             </form>
         </div>
     )

@@ -37,9 +37,9 @@ function ResetPage({handleReset}) {
 
     return (
         <div className='rs-pass'>
-            <section className='login-card rs-pass'>
 
-                <h2 className='mb-3'>Reset Password</h2>
+            <section>
+                {/* <h2><b>Reset Password</b></h2> */}
 
                 <CredentialsResetForm
                     onSubmit={onSuccessReset}

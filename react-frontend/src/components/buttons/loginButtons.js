@@ -1,4 +1,5 @@
 import { FcGoogle } from 'react-icons/fc'
+import { FaGithub } from 'react-icons/fa'
 import BasicButton from "./common"
 import { Link } from "react-router-dom"
 
@@ -16,7 +17,7 @@ function GoogleOAuth2Button ({onClick}) {
 function GitHubOAuth2Button ({onClick}) {
     return (
         <BasicButton
-            IconElement={() => <i className="bi bi-github mx-2"></i>}
+            IconElement={() => <FaGithub className="bi bi-github mx-2"/>}
             text={"Continue with GitHub"}
             className={"btn-dark"}
             onClick={onClick}

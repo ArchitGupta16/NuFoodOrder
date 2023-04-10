@@ -13,7 +13,7 @@ function LaunchPage () {
         <div className="launch-page">
             
             <div>
-                <h1>Welcome to NuOrder</h1>
+                <h1 className='h1-lp' >Welcome to NuOrder</h1>
             </div>
 
             <div className="header">
