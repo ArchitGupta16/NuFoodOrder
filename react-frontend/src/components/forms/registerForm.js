@@ -41,7 +41,7 @@ function RegisterForm({onSubmit}) {
     }
 
     const handleSuccessRegister = function () {
-        navigate("/otp")
+        navigate("/login")
     }
 
     const handleRegisterUser = (e) => {
