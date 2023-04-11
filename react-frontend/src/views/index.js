@@ -4,6 +4,8 @@ import RegisterPage from './registerPage'
 import HomePage from './homePage'
 import SuccessLoginPage from './successLoginPage'
 import FailureLoginPage from './failureLoginPage'
+import ResetPage from './ResetPassword'
+import OtpPage from './otp'
 
 
 export { 
@@ -11,5 +13,7 @@ export {
     RegisterPage, 
     HomePage, 
     SuccessLoginPage, 
-    FailureLoginPage
+    FailureLoginPage,
+    ResetPage,
+    OtpPage
 }

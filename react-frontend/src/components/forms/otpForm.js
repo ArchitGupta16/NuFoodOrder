@@ -1,27 +1,53 @@
 
-import React from 'react'
+import React, { useRef } from 'react'
 import { useForm } from "react-hook-form"
-import { LoginButton as RegisterButton } from 'components/buttons'
+import { ResetButton as ResetButton } from 'components/buttons'
 import { EmailInput, PasswordInput, FullNameInput } from 'components/inputs'
 import "./loginForm.css"
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import {ToastConatiner, toast} from 'react-toastify'
 
-function RegisterForm({onSubmit}) {
+function OtpForm({onSubmit}) {
+
+    // const emailRef = useRef();
+    // const sendOtp = async () => {
+    //     try {
+    //         // let url = "http://localhost:3000/api/v1/"
+    //         let url = "http://localhost:3080/api/v1/sendEmail"
+    //         let options = {
+    //             method: "post",
+    //             url: url,
+    //             data: {email: emailRef.current.value}
+    //         }
+    //         let response = await axios(options)
+    //         console.log(response)
+    //         if (response.data.statusText == "Success"){
+    //             toast.success("Login Successfully");
+    //             toast.success(response.data.message)
+    //             // localStorage.setItem("token", response.data.token)
+    //             // setTimeout{()=>{
+    //             //     history.pushState('/home')
+    //             // }, 1500}
+    //         }else {
+    //             toast.error(response.data.message);
+    //         }
+    //     }catch (e) {
+    //         toast.error("Something went wrong");
+    //     }
+    // }
 
     let navigate = useNavigate()
 
-    const MAX_LENGTH_FULLNAME = 64
-    const MAX_LENGTH_EMAIL = 128
+    const MAX_LENGTH_OTP = 5
     const MAX_LENGTH_PASSWORD = 64
 
     const formSchema = Yup.object().shape({
-        fullname: Yup.string()
-            .required('Full name is mandatory'),
-        email: Yup.string()
-            .required('Email address is mandatory')
-            .email('Must be a valid email'),
+        otp: Yup.string()
+            .required('OTP is mandatory'),
+            // .maxLength(MAX_LENGTH_OTP),
         password: Yup.string()
             .required('Password is mandatory')
             .min(8, 'Password require at least 8 characters'),
@@ -35,16 +61,15 @@ function RegisterForm({onSubmit}) {
 
     const handleFailRegister = function ({response}) {
         let { error } = response.data
-        error.email && setError("email", { message: error.email }, { shouldFocus: true })
+        error.otp && setError("otp", { message: error.otp }, { shouldFocus: true })
         error.password && setError("password", { message: error.password }, { shouldFocus: true })
-        error.fullname && setError("fullname", { message: error.fullname }, { shouldFocus: true })
     }
 
     const handleSuccessRegister = function () {
-        navigate("/otp")
+        navigate("/login")
     }
 
-    const handleRegisterUser = (e) => {
+    const handleOtpUser = (e) => {
         e.preventDefault()
 
         handleSubmit((userInformation) => {
@@ -55,25 +80,16 @@ function RegisterForm({onSubmit}) {
     }
 
     return (
-        <form onSubmit={handleRegisterUser}>
+        <form onSubmit={handleOtpUser}>
             <div className='sign-form'>
                 <FullNameInput
-                    onRegister={register("fullname", {required: true})}
-                    inputName="fullname"
-                    label="Full name"
-                    placeholder="Enter your full name"
-                    className={errors.fullname ? 'is-invalid' : ''}
-                    errorMessage={errors.fullname?.message}
-                    maxLength={MAX_LENGTH_FULLNAME}
-                />
-                <EmailInput 
-                    onRegister={register("email", {required: true})}
-                    inputName="email"
-                    label="Email address"
-                    placeholder="name@example.com"
-                    className={errors.email ? 'is-invalid' : ''}
-                    errorMessage={errors.email?.message}
-                    maxLength={MAX_LENGTH_EMAIL}
+                    onRegister={register("otp", {required: true})}
+                    inputName="otp"
+                    label="OTP"
+                    placeholder="Enter your OTP"
+                    className={errors.otp ? 'is-invalid' : ''}
+                    errorMessage={errors.otp?.message}
+                    maxLength={MAX_LENGTH_OTP}
                 />
                 <PasswordInput
                     onRegister={register("password", {required: true})}
@@ -94,8 +110,9 @@ function RegisterForm({onSubmit}) {
                     maxLength={MAX_LENGTH_PASSWORD}
                 />
 
-                <RegisterButton
-                    textContent={"Sign up"} 
+                <ResetButton
+                    textContent={"Reset Password"} 
+                    // onClick={sendOtp}
                 />
             </div>
         </form>
@@ -104,4 +121,4 @@ function RegisterForm({onSubmit}) {
 }
 
 
-export default RegisterForm
+export default OtpForm

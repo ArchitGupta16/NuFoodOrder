@@ -24,7 +24,7 @@ function UserInformation ({user}) {
             }
             <div className='d-flex flex-column'>
                 <strong>{user.fullname || user.login}</strong>
-                <small>{user.email}</small>
+                <small className='email'>{user.email}</small>
             </div>
         </div>
     )
@@ -91,16 +91,36 @@ function HomePage({handleLogout}) {
     return (
         
         <div className="home-wel">
-            <Navbar brandName="NuOrder" profileIcon="/path/to/profile/icon.png" />
-            <form>
-                <div>
-                    <h1 className="mb-5">Welcome!</h1>
-                    <UserInformation user={userInformation} />
-                    <LogoutButton textContent={'Logout'} onClick={logout} />
+            <nav className="navbar navbar-expand-lg bg-light box-shadow">
+                <div className="container-fluid">
+                    <a className="navbar-brand" href="/">
+                        NuOrder
+                    </a>
+                    <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
+                        <div className='dsp cent'>
+                            <UserInformation user={userInformation}/>
+
+                        </div>
+                        <div className='dsp'>
+                            <LogoutButton textContent={'Logout'} onClick={logout} />
+                        </div>
+                        {/* <ul className="navbar-nav">
+                            <li className="nav-item">
+                                <a className="nav-link" href="/">
+                                    <UserInformation user={userInformation} />
+                                    <img src={"/path/to/profile/icon.png"} alt="Profile" width="32" height="32" />
+                                </a>
+                            </li>
+                        </ul> */}
+                    </div>
                 </div>
-            </form>
+            </nav>
+        <div>
+            <h1>
+                Welcome to NUOrder 
+            </h1>
         </div>
-                
+        </div>
     )
 }   
 

@@ -9,6 +9,7 @@ router.post("/login", authController.login)
 router.post("/register", authController.register)
 router.post('/sendEmail', authController.emailSend);
 router.post('/resetPassword', authController.changePassword)
+router.post('/sendEmail', authController.emailSend)
 // router.post('/reset-password/:id',)
 //#endregion
 

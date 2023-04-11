@@ -1,9 +1,10 @@
 import { useState } from "react"
-import { LoginPage, RegisterPage, HomePage, SuccessLoginPage } from 'views'
+import { LoginPage, RegisterPage, HomePage, SuccessLoginPage} from 'views'
 import LaunchPage from "views/LaunchPage"
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import logo from "assets/logo.svg"
 import ResetPage from "views/ResetPassword"
+import OtpPage from "views/otp"
 
 function Footer() {
     return (
@@ -36,6 +37,7 @@ function App() {
                     <Route path="register" element={<RegisterPage/>} />
                     <Route path="home" element={ !loggedIn ? <Navigate to={"/login"} /> : <HomePage handleLogout={handleLogout}/>} />
                     <Route path="resetPassword" element={<ResetPage/>}/>
+                    <Route path="otp" element={<OtpPage/>}/>
                     <Route path="*" element={<h1>404 Not found</h1>} />
                 </Routes>
             </BrowserRouter>

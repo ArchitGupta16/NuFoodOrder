@@ -140,6 +140,7 @@ function AuthController(database, logger) {
     this.emailSend = async (req,res) => {
         let data = await this.database.getUserByEmail(req.body.email);
         const response = {};
+        console.log("email : ",data)
         
         if (data){
             let otpcode = Math.floor((Math.random()*10000+1));
@@ -149,7 +150,8 @@ function AuthController(database, logger) {
                 expireIn: new Date().getTime() + 300*1000
             })
             let otpResponse = await otpData.save();
-            const link = `http://localhost:3000/api/v1/resetPassword/${otpResponse._id}`
+            // const link = `http://localhost:3000/api/v1/sendEmail/${otpResponse._id}`
+            const link = `http://localhost:3000/api/v1/sendEmail`
             mailer(req.body.email,link);
             
             response.message = 'Mail sent'

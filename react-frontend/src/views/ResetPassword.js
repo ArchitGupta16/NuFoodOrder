@@ -6,6 +6,8 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import CredentialsResetForm from 'components/forms/resetForm'
 import './ResetPassword.css'
+import { authController } from "services/http"
+
 
 function ResetPage({handleReset}) {
 
@@ -22,18 +24,21 @@ function ResetPage({handleReset}) {
 
     const [messageError, setMessageError] = useState("")
 
-
-    const onSuccessReset = function ({data}) {
-        let sid = data
-
-        if (!sid) {
-            let error = "An error occurred during the reset process"
-            console.log(error)
-            setMessageError(error)
-            return
-        }
-        navigate("/login")
+    const resetUser = function (credentials) {
+        return authController.resetPassword(credentials)
     }
+
+    // const onSuccessReset = function ({data}) {
+    //     // let sid = data
+
+    //     // if (!sid) {
+    //     //     let error = "An error occurred during the reset process"
+    //     //     console.log(error)
+    //     //     setMessageError(error)
+    //     //     return
+    //     // }
+    //     navigate("/otp")
+    // }
 
     return (
         <div className='rs-pass'>
@@ -42,7 +47,7 @@ function ResetPage({handleReset}) {
                 {/* <h2><b>Reset Password</b></h2> */}
 
                 <CredentialsResetForm
-                    onSubmit={onSuccessReset}
+                    onSubmit={resetUser}
                     messageError={messageError}
                 />
             </section>

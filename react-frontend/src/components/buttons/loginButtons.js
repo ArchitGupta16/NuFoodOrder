@@ -1,5 +1,5 @@
 import { FcGoogle } from 'react-icons/fc'
-import { FaGithub } from 'react-icons/fa'
+import {FaGithub} from 'react-icons/fa'
 import BasicButton from "./common"
 import { Link } from "react-router-dom"
 
@@ -26,6 +26,18 @@ function GitHubOAuth2Button ({onClick}) {
 }
 
 function LoginButton ({onClick, textContent}) {
+    return (
+        <BasicButton
+            type="submit"
+            text={textContent}
+            className={"btn-light"}
+            onClick={onClick}
+            style={{backgroundColor:"#0d6efd", color: "white"}}
+        />
+    )
+}
+
+function ResetButton ({onClick, textContent}) {
     return (
         <BasicButton
             type="submit"
@@ -65,5 +77,6 @@ export {
     GoogleOAuth2Button,
     GitHubOAuth2Button,
     LogoutButton,
-    LinkButton
+    LinkButton,
+    ResetButton
 }

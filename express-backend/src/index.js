@@ -1,3 +1,4 @@
+// require("dotenv").config()
 require("dotenv").config()
 const logger = require("./services/log/")
 const database = require("./services/database")
